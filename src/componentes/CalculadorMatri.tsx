@@ -254,17 +254,17 @@ function MatrixCalculator() {
                 {/* Botones para realizar operaciones 
                     Implementación de los props en los botones operacionales
                 */}
-                <Button value="A + B" onClick={() => setOperator('+')} />
-                <Button value="A - B" onClick={() => setOperator('-')} />
-                <Button value="A * B" onClick={() => setOperator('*')} />
-                <Button value="A / B" onClick={() => setOperator('/')} />
-                <Button value="Calcular" onClick={calculate} />
-                <Button value="C" onClick={handClearClick} />
+                <Button value="Matriz A + Matriz B" onClick={() => setOperator('+')} />
+                <Button value="Matriz A - Matriz B" onClick={() => setOperator('-')} />
+                <Button value="Matriz A * Matriz B" onClick={() => setOperator('*')} />
+                <Button value="Matriz A / Matriz B" onClick={() => setOperator('/')} />
+                <Button value="=" onClick={calculate} />
+                <Button value="AC" onClick={handClearClick} />
 
                 {/* Resultado */}
                 {resultMatrix && (
                     <div>
-                        <h3>Resultado</h3>
+                        <h3>RESULTADO</h3>
                         {resultMatrix.map((row, i) => (
                             <div key={i}>
                                 {row.map((value, j) => (
