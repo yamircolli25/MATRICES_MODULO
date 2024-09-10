@@ -56,7 +56,7 @@ function MatrixCalculator() {
     }, [dimensionMatrix]);
 
     const handClearClick = () => {
-        setDisplayValue('Ingresa los valores de las matrices que quieres calcular :)');
+        setDisplayValue('Ingresa los valores de las matrices a calcular :)');
         setOperator(null);
         
         // Reinicia las matrices A y B a ceros
