@@ -202,7 +202,7 @@ function MatrixCalculator() {
 
     return (
         <div className='matrix-calculator'>
-            <h2>Calculadora de Matrices</h2>
+            <h2>CALCULADORA DE MATRICES</h2>
             <div className='display'>
                 {/* Botones para seleccionar el tipo de matriz */}
                 <div>
@@ -211,7 +211,7 @@ function MatrixCalculator() {
                     <Button value="Matriz Tridimencional" onClick={() => handleDimensionChange('tridimensional')} />
                 </div>
 
-                <h3>Tipo de Matriz Seleccionado: {dimensionMatrix}</h3>
+                <h3>MATRIZ SELECCIONADA: {dimensionMatrix}</h3>
 
                 {displayValue} {/*Mensaje de que ingrese nuevamente los valores*/}
 

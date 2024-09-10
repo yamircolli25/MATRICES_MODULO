@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM  from 'react-dom/client';
 import MatrixCalculator from './componentes/CalculadorMatri';
-import Hecho_en from './componentes/children';
+import CALCULADORA from './componentes/children';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <MatrixCalculator />
-    <Hecho_en>
+    <CALCULADORA>
       <h5>CALCULADORA DE MATRICES</h5>
-    </Hecho_en>
+    </CALCULADORA>
   </React.StrictMode>
 );
