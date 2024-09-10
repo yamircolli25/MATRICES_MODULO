@@ -56,7 +56,7 @@ function MatrixCalculator() {
     }, [dimensionMatrix]);
 
     const handClearClick = () => {
-        setDisplayValue('Ingresa los valores de las matrices a calcular :)');
+        setDisplayValue('Ingresa nuevamente las valores de las matrices a calcular :)');
         setOperator(null);
         
         // Reinicia las matrices A y B a ceros
@@ -106,7 +106,7 @@ function MatrixCalculator() {
             case '/':
                 return a / b;
             default:
-                throw new Error('Operacion no encontrada');
+                throw new Error('Operador no válido');
         }
     };
 
@@ -139,7 +139,7 @@ function MatrixCalculator() {
 
     function calculate() {
         if (operator === null) {
-            alert('Selecciona una numero antes de calcular la matriz');
+            alert('Selecciona una operación antes de calcular');
             return;
         }
 
@@ -188,11 +188,11 @@ function MatrixCalculator() {
                 break;
 
             case 'tridimensional':
-                alert('Añade más matrices ');
+                alert('La multiplicación de matrices tridimensionales no está implementada');
                 return;
 
             default:
-                throw new Error('Error de Matriz');
+                throw new Error('Dimensión no soportada');
         }
 
         setResultMatrix(result);
@@ -206,9 +206,9 @@ function MatrixCalculator() {
             <div className='display'>
                 {/* Botones para seleccionar el tipo de matriz */}
                 <div>
-                    <Button value="Unidimencional" onClick={() => handleDimensionChange('Matriz Unidimensional')} />
-                    <Button value="Bidimencional" onClick={() => handleDimensionChange('Matriz Bidimensional')} />
-                    <Button value="Tridimencional" onClick={() => handleDimensionChange('Matriz Tridimensional')} />
+                    <Button value="Matriz Unidimencional" onClick={() => handleDimensionChange('unidimensional')} />
+                    <Button value="Matriz Bidimencional" onClick={() => handleDimensionChange('bidimensional')} />
+                    <Button value="Matriz Tridimencional" onClick={() => handleDimensionChange('tridimensional')} />
                 </div>
 
                 <h3>Tipo de Matriz Seleccionado: {dimensionMatrix}</h3>
