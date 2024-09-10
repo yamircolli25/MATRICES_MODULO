@@ -7,7 +7,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <MatrixCalculator />
     <Hecho_en>
-      <h5>Made in México</h5>
+      <h5>CALCULADORA DE MATRICES</h5>
     </Hecho_en>
   </React.StrictMode>
 );
