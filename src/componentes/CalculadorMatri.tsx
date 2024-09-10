@@ -206,9 +206,9 @@ function MatrixCalculator() {
             <div className='display'>
                 {/* Botones para seleccionar el tipo de matriz */}
                 <div>
-                    <Button value="Matriz Unidimencional" onClick={() => handleDimensionChange('unidimensional')} />
-                    <Button value="Matriz Bidimencional" onClick={() => handleDimensionChange('bidimensional')} />
-                    <Button value="Matriz Tridimencional" onClick={() => handleDimensionChange('tridimensional')} />
+                    <Button value="Matriz Unidimensional" onClick={() => handleDimensionChange('unidimensional')} />
+                    <Button value="Matriz Bidimensional" onClick={() => handleDimensionChange('bidimensional')} />
+                    <Button value="Matriz Tridimensional" onClick={() => handleDimensionChange('tridimensional')} />
                 </div>
 
                 <h3>MATRIZ SELECCIONADA: {dimensionMatrix}</h3>
