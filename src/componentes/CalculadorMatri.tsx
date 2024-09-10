@@ -56,7 +56,7 @@ function MatrixCalculator() {
     }, [dimensionMatrix]);
 
     const handClearClick = () => {
-        setDisplayValue('Ingresa nuevamente las valores de las matrices a calcular :)');
+        setDisplayValue('Ingresa nuevamente tus valores');
         setOperator(null);
         
         // Reinicia las matrices A y B a ceros
@@ -76,7 +76,7 @@ function MatrixCalculator() {
         const validation = validationsDimension.safeParse(dimension);
 
         if (!validation.success) {
-            alert('Dimensión inválida, por favor selecciona una válida.');
+            alert('Dimensión inválida. Selecciona una dimensión valida.');
             return;
         }
 
@@ -118,7 +118,7 @@ function MatrixCalculator() {
 
         // Verifica si la multiplicación es posible
         if (colsA !== rowsB) {
-            throw new Error('Número de columnas de A debe ser igual al número de filas de B');
+            throw new Error('El número de columnas de matrices A deben ser igual que el número de filas de la matrices B');
         }
 
         // Inicializa la matriz resultado
@@ -139,7 +139,7 @@ function MatrixCalculator() {
 
     function calculate() {
         if (operator === null) {
-            alert('Selecciona una operación antes de calcular');
+            alert('Selecciona tu operacion para calcular');
             return;
         }
 
@@ -188,11 +188,11 @@ function MatrixCalculator() {
                 break;
 
             case 'tridimensional':
-                alert('La multiplicación de matrices tridimensionales no está implementada');
+                alert('Esa tridimensionalidad de matrices no está implementada');
                 return;
 
             default:
-                throw new Error('Dimensión no soportada');
+                throw new Error('Dimensión no apta');
         }
 
         setResultMatrix(result);
