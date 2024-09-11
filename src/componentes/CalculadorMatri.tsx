@@ -4,7 +4,7 @@ import { validateMatrix, validationsDimension } from './Validacion';
 import './CalculadorMatri.css';
 
 function MatrixCalculator() {
-    /*El primer componente actualiza el segundo*/
+    // El primer componente actualiza el segundo
     const [displayValue, setDisplayValue] = useState<string>('Prueba la calculadora');
     const [matrixA, setMatrixA] = useState<number[][]>([[0]]);
     const [matrixB, setMatrixB] = useState<number[][]>([[0]]);
@@ -19,11 +19,11 @@ function MatrixCalculator() {
         col: number,
         value: string
     ) => {
-        //Se crea una copio de la matriz
+        // Se crea una copia de la matriz
         const newMatrix = matrix.map(r => [...r]);
         // Si el valor es vacío, se establece como cadena vacía en lugar de un número
         if (value === '') {
-            newMatrix[row][col] = value as unknown as number; // Temporariamente permite un string vacío
+            newMatrix[row][col] = value as unknown as number; // Temporalmente permite un string vacío
         } else {
             newMatrix[row][col] = parseFloat(value); // Convertir a número solo si hay algo en value
         }
@@ -31,12 +31,12 @@ function MatrixCalculator() {
         setMatrix(newMatrix);
     };
 
-    {/*Matriz A*/}
+    // Matriz A
     const handleMatrixAInput = (row: number, col: number, value: string) => {
         handleMatrixInput(matrixA, setMatrixA, row, col, value);
     };
 
-    {/*Matriz B*/}
+    // Matriz B
     const handleMatrixBInput = (row: number, col: number, value: string) => {
         handleMatrixInput(matrixB, setMatrixB, row, col, value);
     };
@@ -58,19 +58,19 @@ function MatrixCalculator() {
     const handClearClick = () => {
         setDisplayValue('Ingresa nuevamente tus valores');
         setOperator(null);
-        
+
         // Reinicia las matrices A y B a ceros
         const defaultMatrix = dimensionMatrix === 'unidimensional'
             ? [[0]]
             : dimensionMatrix === 'bidimensional'
                 ? [[0, 0], [0, 0]]
                 : [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
-        
+
         setMatrixA(defaultMatrix);
         setMatrixB(defaultMatrix);
         setResultMatrix(null); // Limpiar la matriz de resultados
     };
-    
+
     // Validar el cambio de dimensión usando Zod
     const handleDimensionChange = (dimension: string) => {
         const validation = validationsDimension.safeParse(dimension);
@@ -93,7 +93,6 @@ function MatrixCalculator() {
         setMatrixB(defaultMatrix);
         setResultMatrix(null);
     };
-
 
     const applyOperation = (a: number, b: number, operator: string): number => {
         switch (operator) {
@@ -136,7 +135,6 @@ function MatrixCalculator() {
         return result;
     };
 
-
     function calculate() {
         if (operator === null) {
             alert('Selecciona tu operacion para calcular');
@@ -151,11 +149,13 @@ function MatrixCalculator() {
             console.error(`Error en Matriz A: ${matrixAValidation.error.issues.map((issue: { message: unknown; }) => issue.message).join(', ')}`);
             return;
         }
-
+        
         if (!matrixBValidation.success) {
             console.error(`Error en Matriz B: ${matrixBValidation.error.issues.map((issue: { message: unknown; }) => issue.message).join(', ')}`);
             return;
         }
+        
+        
 
         let result: number[][];
 
@@ -188,8 +188,16 @@ function MatrixCalculator() {
                 break;
 
             case 'tridimensional':
-                alert('Esa tridimensionalidad de matrices no está implementada');
-                return;
+                if (operator === '*') {
+                    result = multiplyMatrices(matrixA, matrixB);
+                } else {
+                    result = matrixA.map((row, i) =>
+                        row.map((_, j) =>
+                            applyOperation(matrixA[i][j], matrixB[i][j], operator!)
+                        )
+                    );
+                }
+                break;
 
             default:
                 throw new Error('Dimensión no apta');
@@ -198,7 +206,6 @@ function MatrixCalculator() {
         setResultMatrix(result);
         setOperator(null);
     }
-
 
     return (
         <div className='matrix-calculator'>
@@ -213,12 +220,11 @@ function MatrixCalculator() {
 
                 <h3>MATRIZ SELECCIONADA: {dimensionMatrix}</h3>
 
-                {displayValue} {/*Mensaje de que ingrese nuevamente los valores*/}
+                {displayValue} {/* Mensaje de que ingrese nuevamente los valores */}
 
                 {/* Matriz A */}
                 <div>
                     <h3>Matriz A</h3>
-                    {/*Crea una copia de la matriz B*/}
                     {matrixA.map((row, i) => (
                         <div key={i}>
                             {row.map((value, j) => (
@@ -236,7 +242,6 @@ function MatrixCalculator() {
                 {/* Matriz B */}
                 <div>
                     <h3>Matriz B</h3>
-                    {/*Crea una copia de la matriz B*/}
                     {matrixB.map((row, i) => (
                         <div key={i}>
                             {row.map((value, j) => (
@@ -251,9 +256,7 @@ function MatrixCalculator() {
                     ))}
                 </div>
 
-                {/* Botones para realizar operaciones 
-                    Implementación de los props en los botones operacionales
-                */}
+                {/* Botones para realizar operaciones */}
                 <Button value="Matriz A + Matriz B" onClick={() => setOperator('+')} />
                 <Button value="Matriz A - Matriz B" onClick={() => setOperator('-')} />
                 <Button value="Matriz A * Matriz B" onClick={() => setOperator('*')} />
