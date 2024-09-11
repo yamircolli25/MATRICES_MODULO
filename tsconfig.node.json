@@ -18,12 +18,5 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
- "include": [
-    "./vite.config.ts",
-    "./vitest.setup.ts", // Si tienes un archivo de configuración de Vitest
-    "./src//*.ts",
-    "src/Test//*.ts", // O la ruta donde estén tus pruebas
-    "src/Test/tst_matFun_result.test.tsx"
-  ]
-
+  "include": ["vite.config.ts"]
 }
